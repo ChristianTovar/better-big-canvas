@@ -33,5 +33,6 @@ npm-debug.log
 # this depending on your deployment strategy.
 /priv/static/
 
-# Ignore elixirLS
+# Ignore various stuff
 /.elixir_ls
+.DS_Store
