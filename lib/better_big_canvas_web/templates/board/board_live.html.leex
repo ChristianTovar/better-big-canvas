@@ -1,8 +1,10 @@
 <section>
-  <%= for _i <- 1..25 do %>
+  <%= for _i <- 1..20 do %>
     <div class="row">
-      <%= for _j <- 1..25 do %>
-        <div class="column">[]</div>
+      <%= for _j <- 1..20 do %>
+        <div class="column">
+          <%= live_component @socket, BetterBigCanvasWeb.CanvasComponent, id: UUID.uuid4() %>
+        </div>
       <% end %>
     </div>
   <% end %>
