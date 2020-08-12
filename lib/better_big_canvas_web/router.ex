@@ -18,6 +18,7 @@ defmodule BetterBigCanvasWeb.Router do
     pipe_through :browser
 
     live "/", BoardLive
+    live "/:id", CanvasLive
   end
 
   # Other scopes may use custom stacks.
