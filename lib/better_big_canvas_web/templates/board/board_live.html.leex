@@ -1,11 +1,13 @@
 <section>
-  <%= for _i <- 1..20 do %>
-    <div class="row">
-      <%= for _j <- 1..20 do %>
-        <div class="column">
-          <%= live_component @socket, BetterBigCanvasWeb.CanvasComponent, id: UUID.uuid4() %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="board">
+    <%= for _i <- 1..20 do %>
+      <div class="row">
+        <%= for _j <- 1..20 do %>
+          <div class="column">
+            <%= live_component @socket, BetterBigCanvasWeb.CanvasComponent, id: UUID.uuid4() %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </section>

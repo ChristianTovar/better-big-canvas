@@ -89,3 +89,28 @@
   display: block;
   margin: -1rem 0 2rem;
 }
+
+// BBC
+.row{
+  margin: 0 !important;
+  width: 30px;
+}
+.column{
+  padding: 0 !important;
+}
+.board{
+  margin: auto;
+  border-style: solid;
+  border-color: black;
+  border-width: thin;
+  height: 600px;
+  width: 600px;
+}
+.board-square {
+  height: 30px;
+  width: 30px;
+
+  &:hover {
+    background-color: rgba(0,0,0,0.05);
+  }
+}

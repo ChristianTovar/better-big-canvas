@@ -3,7 +3,7 @@ defmodule BetterBigCanvasWeb.CanvasComponent do
 
   def render(assigns) do
     ~L"""
-    <div> [ ] </div>
+    <div class="board board-square"></div>
     """
   end
 end
