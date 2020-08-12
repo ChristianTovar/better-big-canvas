@@ -1,4 +1,4 @@
-defmodule BetterBigCanvasWeb.CanvasComponent do
+defmodule BetterBigCanvasWeb.BoardComponent do
   use Phoenix.LiveComponent
 
   def render(assigns) do
