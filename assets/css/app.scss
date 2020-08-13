@@ -102,11 +102,13 @@
   margin: auto;
   border-style: solid;
   border-color: black;
-  border-width: thin;
+  border-width: 1px;
   height: 600px;
   width: 600px;
 }
 .board-square {
+  border-color: rgba(128, 128, 128, 0.08);
+  border-width: 1px;
   height: 30px;
   width: 30px;
 
