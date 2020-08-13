@@ -1,15 +1,25 @@
 defmodule BetterBigCanvasWeb.CanvasComponent do
   use Phoenix.LiveComponent
 
-  def render(assigns) do
+  def render(%{color: color} = assigns) do
     ~L"""
-    <div class="board board-square" phx-click="clicked" phx-target=<%= @myself %>></div>
+    <div class="board board-square" phx-click="clicked" phx-target=<%= @myself %> style=<%= "background-color:#{color};" %></div>
     """
   end
 
-  def handle_event("clicked", _, socket) do
-    IO.inspect("hey")
+  def update(assigns, socket) do
+    assigns = [
+      color: "white"
+    ]
 
-    {:noreply, socket}
+    {:ok, assign(socket, assigns)}
+  end
+
+  def handle_event("clicked", params, socket) do
+    assigns = [
+      color: "blue"
+    ]
+
+    {:noreply, assign(socket, assigns)}
   end
 end
