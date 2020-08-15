@@ -5,11 +5,10 @@ defmodule BetterBigCanvasWeb.CanvasComponent do
 
   def render(%{color: color} = assigns) do
     ~L"""
-    <div class="board board-square" phx-click="clicked" phx-target=<%= @myself %> style=<%= "background-color:##{color};" %></div>
+    <div class="board board-square" phx-click="clicked" phx-target=<%= @myself %> style=<%= "background-color:#{color};" %></div>
     """
   end
 
-  def handle_event("clicked", _params, %{assigns: %{pickr_color: new_color}} = socket) do
-    {:noreply, assign(socket, color: new_color)}
-  end
+  def handle_event("clicked", _params, %{assigns: %{pickr_color: new_color}} = socket),
+    do: {:noreply, assign(socket, color: new_color)}
 end

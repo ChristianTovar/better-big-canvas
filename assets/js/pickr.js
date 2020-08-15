@@ -7,11 +7,9 @@ export const ColorPickr = (hook) => {
     theme: "nano",
     closeOnScroll: true,
     closeWithKey: "Escape",
-    default: "#42445a",
+    default: "#DF1010",
 
     components: {
-      preview: true,
-      opacity: true,
       hue: true,
 
       interaction: {
@@ -21,6 +19,7 @@ export const ColorPickr = (hook) => {
   });
 
   pickr.on("change", (instance) => {
-    hook.pushEvent("select-color", { color: instance.toHEXA().join("") });
+    const selectedColor = instance.toHEXA().toString();
+    hook.pushEvent("select-color", { color: selectedColor });
   });
 };
