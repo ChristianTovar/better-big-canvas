@@ -1,10 +1,11 @@
 <section>
+  <div id="color-pickr" phx-hook="ColorPickr"> ></div>
   <div class="board">
     <%= for _i <- 1..20 do %>
       <div class="row">
         <%= for _j <- 1..20 do %>
           <div class="column">
-            <%= live_component @socket, BetterBigCanvasWeb.CanvasComponent, id: UUID.uuid4() %>
+            <%= live_component @socket, BetterBigCanvasWeb.CanvasComponent, id: UUID.uuid4(), pickr_color: @pickr_color %>
           </div>
         <% end %>
       </div>
