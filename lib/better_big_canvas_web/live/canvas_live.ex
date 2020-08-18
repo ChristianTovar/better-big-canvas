@@ -4,7 +4,8 @@ defmodule BetterBigCanvasWeb.CanvasLive do
   alias BetterBigCanvasWeb.CanvasView
 
   @impl true
-  def mount(_params, _session, socket), do: {:ok, assign(socket, pickr_color: "white")}
+  def mount(%{"id" => id}, _session, socket),
+    do: {:ok, assign(socket, pickr_color: "white", parent_id: id)}
 
   @impl true
   def render(assigns), do: Phoenix.View.render(CanvasView, "canvas_live.html", assigns)

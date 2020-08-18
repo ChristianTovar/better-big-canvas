@@ -11,13 +11,13 @@
           <div class="row">
             <%= for _j <- 1..20 do %>
               <div class="column">
-                <%= live_component @socket, BetterBigCanvasWeb.CanvasComponent, id: UUID.uuid4(), pickr_color: @pickr_color %>
+                <%= live_component @socket, BetterBigCanvasWeb.CanvasComponent, id: UUID.uuid4(), pickr_color: @pickr_color, parent_id: @parent_id %>
               </div>
             <% end %>
           </div>
         <% end %>
       </div>
     </div>
-     <!-- end of board -->
+    <!-- end of board -->
   </div>
 </section>
