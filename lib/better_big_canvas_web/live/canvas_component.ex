@@ -18,7 +18,7 @@ defmodule BetterBigCanvasWeb.CanvasComponent do
 
   def render(%{color: color} = assigns) do
     ~L"""
-    <div class="board board-square" phx-click="clicked" phx-target=<%= @myself %> style=<%= "background-color:#{color};" %></div>
+    <div class="board canvas-square" phx-click="clicked" phx-target=<%= @myself %> style=<%= "background-color:#{color};" %></div>
     """
   end
 

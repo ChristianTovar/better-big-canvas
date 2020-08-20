@@ -6,7 +6,8 @@ defmodule BetterBigCanvas.Square do
 
   alias Database.Square
 
-  @squares_range 0..399
+  @board_range 0..399
+  @canvas_range 0..899
   @white "#FFFFFF"
 
   def update(id, data) do
@@ -22,7 +23,7 @@ defmodule BetterBigCanvas.Square do
   end
 
   def populate do
-    Enum.each(@squares_range, fn id ->
+    Enum.each(@board_range, fn id ->
       Amnesia.transaction do
         Square.write(%Square{id: id, data: set_data()})
       end
@@ -30,7 +31,7 @@ defmodule BetterBigCanvas.Square do
   end
 
   defp set_data do
-    @squares_range
+    @canvas_range
     |> Enum.map(&{&1, @white})
     |> Enum.into(%{})
   end
