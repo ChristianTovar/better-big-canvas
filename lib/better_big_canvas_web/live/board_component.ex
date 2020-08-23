@@ -1,9 +1,17 @@
 defmodule BetterBigCanvasWeb.BoardComponent do
   use Phoenix.LiveComponent
 
+  alias BetterBigCanvas.Square
+
   def render(assigns) do
+    pixels =
+      assigns.myself
+      |> Square.read()
+      |> Map.get(:data)
+      |> Jason.encode!()
+
     ~L"""
-    <div class="board board-square" phx-click="clicked" phx-target=<%= @myself %>></div>
+    <canvas id="<%= @myself%>" class="board board-square" phx-hook="Canvas" phx-click="clicked" phx-target="<%= @myself %>" data-pixels="<%= pixels %>" width="30" height="30"></canvas>
     """
   end
 

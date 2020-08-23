@@ -17,12 +17,19 @@ import {Socket} from "phoenix"
 import NProgress from "nprogress"
 import {LiveSocket} from "phoenix_live_view"
 import { ColorPickr } from "./pickr"
+import { Canvas } from "./canvas"
 
 let Hooks = {};
 
 Hooks.ColorPickr = {
   mounted() {
     ColorPickr(this);
+  },
+};
+
+Hooks.Canvas = {
+  mounted() {
+    Canvas(this);
   },
 };
 
