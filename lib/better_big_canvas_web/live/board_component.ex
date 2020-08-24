@@ -8,6 +8,8 @@ defmodule BetterBigCanvasWeb.BoardComponent do
       assigns.id
       |> Square.read()
       |> Map.get(:data)
+      |> Enum.sort()
+      |> Enum.map(fn {_, value} -> value end)
       |> Jason.encode!()
 
     ~L"""
