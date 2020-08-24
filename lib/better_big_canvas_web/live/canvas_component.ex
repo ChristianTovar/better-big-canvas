@@ -3,13 +3,13 @@ defmodule BetterBigCanvasWeb.CanvasComponent do
 
   alias BetterBigCanvas.Square
 
-  def update(%{parent_id: id} = assigns, %{assigns: %{myself: myself}} = socket) do
+  def update(%{parent_id: parent_id, id: id} = assigns, socket) do
     current_color =
-      id
+      parent_id
       |> String.to_integer()
       |> Square.read()
       |> Map.get(:data)
-      |> Map.get(myself)
+      |> Map.get(id)
 
     updated_assigns = Map.put(assigns, :color, current_color)
 
@@ -25,14 +25,14 @@ defmodule BetterBigCanvasWeb.CanvasComponent do
   def handle_event(
         "clicked",
         _params,
-        %{assigns: %{pickr_color: new_color, parent_id: id, myself: myself}} = socket
+        %{assigns: %{pickr_color: new_color, parent_id: id}} = socket
       ) do
     new_data =
       id
       |> String.to_integer()
       |> Square.read()
       |> Map.get(:data)
-      |> Map.put(myself, new_color)
+      |> Map.put(socket.assigns.id, new_color)
 
     Square.update(String.to_integer(id), new_data)
 
