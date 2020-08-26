@@ -3,16 +3,10 @@ defmodule BetterBigCanvasWeb.CanvasComponent do
 
   alias BetterBigCanvas.Square
 
-  def update(%{parent_id: parent_id, id: id} = assigns, socket) do
-    current_color =
-      parent_id
-      |> String.to_integer()
-      |> Square.read()
-      |> Keyword.get(String.to_atom("#{id}"))
+  def update(assigns, socket) do
+    current_color = get_current_color(assigns)
 
-    updated_assigns = Map.put(assigns, :color, current_color)
-
-    {:ok, assign(socket, updated_assigns)}
+    {:ok, assign(socket, Map.put(assigns, :color, current_color))}
   end
 
   def render(%{color: color} = assigns) do
@@ -21,19 +15,28 @@ defmodule BetterBigCanvasWeb.CanvasComponent do
     """
   end
 
-  def handle_event(
-        "clicked",
-        _params,
-        %{assigns: %{pickr_color: new_color, parent_id: id}} = socket
-      ) do
-    new_data =
-      id
-      |> String.to_integer()
-      |> Square.read()
-      |> Keyword.replace!(String.to_atom("#{socket.assigns.id}"), new_color)
+  def handle_event("clicked", _, %{assigns: assigns} = socket) do
+    update_color(assigns)
 
-    Square.update(String.to_integer(id), new_data)
+    {:noreply, assign(socket, color: assigns.pickr_color)}
+  end
 
-    {:noreply, assign(socket, color: new_color)}
+  defp get_canvas_data(id) do
+    id
+    |> String.to_integer()
+    |> Square.read()
+  end
+
+  defp get_current_color(%{parent_id: parent_id, id: id}) do
+    parent_id
+    |> get_canvas_data()
+    |> Keyword.get(String.to_atom("#{id}"))
+  end
+
+  defp update_color(%{pickr_color: new_color, parent_id: parent_id, id: id}) do
+    parent_id
+    |> get_canvas_data()
+    |> Keyword.replace!(String.to_atom("#{id}"), new_color)
+    |> Square.update(String.to_integer(parent_id))
   end
 end

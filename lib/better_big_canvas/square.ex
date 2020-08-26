@@ -10,9 +10,9 @@ defmodule BetterBigCanvas.Square do
   @canvas_range 0..899
   @white "#FFFFFF"
 
-  def update(id, data) do
+  def update(data, id) do
     Amnesia.transaction do
-      Square.write(%Square{id: id, data: data})
+      Square.write(%Square{data: data, id: id})
     end
   end
 

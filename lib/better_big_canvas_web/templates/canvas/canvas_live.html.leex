@@ -9,7 +9,7 @@
       <div class="board">
         <%= for i <- row_enumerable() do %>
           <div class="row">
-            <%= for j <- 1..30 do %>
+            <%= for j <- 0..29 do %>
               <div class="column">
                 <%= live_component @socket, BetterBigCanvasWeb.CanvasComponent, id: i + j, pickr_color: @pickr_color, parent_id: @parent_id %>
               </div>
