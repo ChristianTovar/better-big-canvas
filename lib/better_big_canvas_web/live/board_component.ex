@@ -7,9 +7,7 @@ defmodule BetterBigCanvasWeb.BoardComponent do
     pixels =
       assigns.id
       |> Square.read()
-      |> Map.get(:data)
-      |> Enum.sort()
-      |> Enum.map(fn {_, value} -> value end)
+      |> Keyword.values()
       |> Jason.encode!()
 
     ~L"""

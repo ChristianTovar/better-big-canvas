@@ -18,7 +18,9 @@ defmodule BetterBigCanvas.Square do
 
   def read(id) do
     Amnesia.transaction do
-      Square.read(id)
+      id
+      |> Square.read()
+      |> Map.get(:data)
     end
   end
 
@@ -30,9 +32,5 @@ defmodule BetterBigCanvas.Square do
     end)
   end
 
-  defp set_data do
-    @canvas_range
-    |> Enum.map(&{&1, @white})
-    |> Enum.into(%{})
-  end
+  defp set_data, do: Enum.map(@canvas_range, &{String.to_atom("#{&1}"), @white})
 end

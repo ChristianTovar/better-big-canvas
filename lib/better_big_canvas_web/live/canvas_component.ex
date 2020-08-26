@@ -8,8 +8,7 @@ defmodule BetterBigCanvasWeb.CanvasComponent do
       parent_id
       |> String.to_integer()
       |> Square.read()
-      |> Map.get(:data)
-      |> Map.get(id)
+      |> Keyword.get(String.to_atom("#{id}"))
 
     updated_assigns = Map.put(assigns, :color, current_color)
 
@@ -31,8 +30,7 @@ defmodule BetterBigCanvasWeb.CanvasComponent do
       id
       |> String.to_integer()
       |> Square.read()
-      |> Map.get(:data)
-      |> Map.put(socket.assigns.id, new_color)
+      |> Keyword.replace!(String.to_atom("#{socket.assigns.id}"), new_color)
 
     Square.update(String.to_integer(id), new_data)
 
