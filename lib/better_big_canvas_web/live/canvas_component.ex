@@ -9,13 +9,13 @@ defmodule BetterBigCanvasWeb.CanvasComponent do
     {:ok, assign(socket, Map.put(assigns, :color, current_color))}
   end
 
-  def render(%{color: color} = assigns) do
+  def render(assigns) do
     ~L"""
-    <div class="board canvas-square" phx-click="clicked" phx-target=<%= @myself %> style=<%= "background-color:#{color};" %></div>
+    <div id="<% @id %>" class="board canvas-square" phx-hook="OnClick" phx-target=<%= @myself %> style=<%= "background-color:#{@color};" %>></div>
     """
   end
 
-  def handle_event("clicked", _, %{assigns: assigns} = socket) do
+  def handle_event("click", _, %{assigns: assigns} = socket) do
     update_color(assigns)
 
     {:noreply, assign(socket, color: assigns.pickr_color)}
