@@ -5,7 +5,9 @@ defmodule BetterBigCanvasWeb.BoardComponent do
 
   def render(assigns) do
     ~L"""
-    <canvas id="<%= @id %>" class="board board-square" phx-hook="Canvas" phx-click="clicked" phx-target="<%= @myself %>" data-pixels="<%= get_pixels(@id) %>" width="30" height="30"></canvas>
+    <div id="<%= @version %>" >
+      <canvas id="<%= @id %>" class="board board-square"  phx-click="clicked" phx-target="<%= @myself %>" phx-hook="Canvas" data-pixels="<%= get_pixels(assigns.id) %>" width="30" height="30"></canvas>
+    </div>
     """
   end
 

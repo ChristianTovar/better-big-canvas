@@ -38,5 +38,7 @@ defmodule BetterBigCanvasWeb.CanvasComponent do
     |> get_canvas_data()
     |> Keyword.replace!(String.to_atom("#{id}"), new_color)
     |> Square.update(String.to_integer(parent_id))
+
+    Phoenix.PubSub.broadcast(BetterBigCanvas.PubSub, "update", %{id: String.to_integer(parent_id)})
   end
 end

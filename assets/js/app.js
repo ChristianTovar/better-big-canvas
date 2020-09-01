@@ -31,6 +31,9 @@ Hooks.Canvas = {
   mounted() {
     Canvas(this);
   },
+  updated() {
+    Canvas(this);
+  }
 };
 
 Hooks.OnClick = {

@@ -6,7 +6,7 @@ defmodule BetterBigCanvas.Square do
 
   alias Database.Square
 
-  @board_range 0..399
+  @board_range 1..400
   @canvas_range 0..899
   @white "#FFFFFF"
 

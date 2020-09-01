@@ -2,9 +2,9 @@
   <div class="board">
     <%= for i <- row_enumerable() do %>
       <div class="row">
-        <%= for j <- 0..19 do %>
+        <%= for j <- 1..20 do %>
           <div class="column board-square">
-            <%= live_component @socket, BetterBigCanvasWeb.BoardComponent, id: i + j %>
+            <%= live_component @socket, BetterBigCanvasWeb.BoardComponent, id: i + j, version: UUID.uuid4() %>
           </div>
         <% end %>
       </div>
