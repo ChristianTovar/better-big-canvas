@@ -1,10 +1,5 @@
 <section>
   <div class="row">
-    <div id="pickr-container" class="column" phx-update="ignore">
-      <div id="color-pickr" phx-hook="ColorPickr"></div>
-    </div>
-    <!-- end of color picker -->
-
     <div class="column">
       <div class="board">
         <%= for i <- row_enumerable() do %>
@@ -19,5 +14,10 @@
       </div>
     </div>
     <!-- end of board -->
+
+    <div id="pickr-container" class="column" phx-update="ignore">
+      <div id="color-pickr" phx-hook="ColorPickr"></div>
+    </div>
+    <!-- end of color picker -->
   </div>
 </section>

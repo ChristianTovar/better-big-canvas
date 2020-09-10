@@ -7,7 +7,7 @@ export const ColorPickr = (hook) => {
     theme: "nano",
     closeOnScroll: true,
     closeWithKey: "Escape",
-    position: "left-start",
+    position: "right-start",
     default: "#2B1AD3",
     components: {
       hue: true,
