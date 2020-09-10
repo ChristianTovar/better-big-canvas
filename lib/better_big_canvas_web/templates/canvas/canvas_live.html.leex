@@ -22,9 +22,16 @@
 
     <div class="column">
       <div class="arrow">
-      <img src="<%= Routes.static_path(@socket, "/images/arrow.png") %>" alt="arrow"/>
+        <img src="<%= Routes.static_path(@socket, "/images/arrow.png") %>" alt="Arrow"/>
       </div>
     </div>
     <!-- end of arrow indicator -->
+
+    <div class="column">
+      <div class="return">
+        <a href="/"><img src="<%= Routes.static_path(@socket, "/images/return.png") %>" alt="Return"/></a>
+      </div>
+    </div>
+    <!-- end of return -->
   </div>
 </section>
