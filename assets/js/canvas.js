@@ -1,7 +1,6 @@
-export const Canvas = (hook) => {
+export const Canvas = (hook, pixels) => {
   const canvas = document.getElementById(hook.el.id);
   let ctx = canvas.getContext("2d");
-  const pixels = JSON.parse(hook.el.getAttribute("data-pixels"));
 
   for (let x = 0; x < 30; x++) {
     for (let y = 0; y < 30; y++) {

@@ -29,11 +29,23 @@ Hooks.ColorPickr = {
 
 Hooks.Canvas = {
   mounted() {
-    Canvas(this);
+    this.handleEvent("pixels", ({ id, pixels }) => {
+      if (id == this.el.id) {
+        Canvas(this, pixels);
+      }
+    });
+
+    this.pushEvent("canvas-mounted", { id: this.el.id });
   },
-  updated() {
-    Canvas(this);
-  }
+  beforeUpdate() {
+    this.handleEvent("new-pixels", ({ id, pixels }) => {
+      if (id == this.el.id && pixels.length) {
+        Canvas(this, pixels);
+      }
+    });
+
+    this.pushEvent("canvas-ready", { id: this.el.id });
+  },
 };
 
 Hooks.OnClick = {
