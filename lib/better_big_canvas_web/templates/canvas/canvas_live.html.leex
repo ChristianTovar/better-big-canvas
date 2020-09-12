@@ -15,11 +15,13 @@
     </div>
     <!-- end of board -->
 
-    <div id="pickr-container" class="column" phx-update="ignore">
+    <div id="pickr-container" class="column pickr-button" phx-update="ignore">
       <div id="color-pickr" phx-hook="ColorPickr"></div>
     </div>
     <!-- end of color picker -->
+  </div>
 
+  <div class="row">
     <div class="column">
       <div class="arrow">
         <img src="<%= Routes.static_path(@socket, "/images/arrow.png") %>" alt="Arrow"/>

@@ -21,6 +21,7 @@ defmodule BetterBigCanvasWeb.BoardLive do
     {:noreply, socket}
   end
 
+  @impl true
   def handle_event("canvas-mounted", %{"id" => id}, socket),
     do: {:noreply, push_event(socket, "pixels", %{id: id, pixels: get_pixels(id)})}
 
