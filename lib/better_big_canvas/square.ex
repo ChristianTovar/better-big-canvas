@@ -24,12 +24,12 @@ defmodule BetterBigCanvas.Square do
     end
   end
 
-  def populate do
-    Enum.each(@board_range, fn id ->
-      Amnesia.transaction do
-        Square.write(%Square{id: id, data: set_data()})
-      end
-    end)
+  def create_and_populate do
+    :mnesia.create_schema([node()])
+    :mnesia.start()
+    :mnesia.create_table(Square, attributes: [:id, :data], disc_only_copies: [node()])
+
+    Enum.each(@board_range, &update(set_data(), &1))
   end
 
   defp set_data, do: Enum.map(@canvas_range, &{String.to_atom("#{&1}"), @white})
