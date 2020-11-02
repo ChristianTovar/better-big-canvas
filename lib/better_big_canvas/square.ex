@@ -25,6 +25,8 @@ defmodule BetterBigCanvas.Square do
   end
 
   def create_and_populate do
+    :mnesia.stop()
+    :mnesia.delete_schema([node()])
     :mnesia.create_schema([node()])
     :mnesia.start()
     :mnesia.create_table(Square, attributes: [:id, :data], disc_only_copies: [node()])
