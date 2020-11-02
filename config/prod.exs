@@ -16,6 +16,11 @@ config :better_big_canvas, BetterBigCanvasWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+# Basic HTTP Authentication
+config :better_big_canvas, :basic_auth,
+  username: System.get_env("USERNAME"),
+  password: System.get_env("PASSWORD")
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

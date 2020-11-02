@@ -1,6 +1,8 @@
 defmodule BetterBigCanvasWeb.Router do
   use BetterBigCanvasWeb, :router
 
+  import Plug.BasicAuth
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -14,31 +16,20 @@ defmodule BetterBigCanvasWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :protected do
+    plug :basic_auth, Application.compile_env(:better_big_canvas, :basic_auth)
+  end
+
+  scope "/reset", BetterBigCanvasWeb do
+    pipe_through [:browser, :protected]
+
+    live "/", ResetLive
+  end
+
   scope "/", BetterBigCanvasWeb do
     pipe_through :browser
 
     live "/", BoardLive
     live "/:id", CanvasLive
-  end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", BetterBigCanvasWeb do
-  #   pipe_through :api
-  # end
-
-  # Enables LiveDashboard only for development
-  #
-  # If you want to use the LiveDashboard in production, you should put
-  # it behind authentication and allow only admins to access it.
-  # If your application does not have an admins-only section yet,
-  # you can use Plug.BasicAuth to set up some basic authentication
-  # as long as you are also using SSL (which you should anyway).
-  if Mix.env() in [:dev, :test] do
-    import Phoenix.LiveDashboard.Router
-
-    scope "/" do
-      pipe_through :browser
-      live_dashboard "/dashboard", metrics: BetterBigCanvasWeb.Telemetry
-    end
   end
 end
