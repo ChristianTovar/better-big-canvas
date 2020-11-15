@@ -65,6 +65,3 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
-
-# Basic HTTP Authentication
-config :better_big_canvas, :basic_auth, username: "username", password: "password"

@@ -17,7 +17,9 @@ defmodule BetterBigCanvasWeb.Router do
   end
 
   pipeline :protected do
-    plug :basic_auth, Application.compile_env(:better_big_canvas, :basic_auth)
+    plug :basic_auth,
+         Application.compile_env(:better_big_canvas, :basic_auth) ||
+           [username: "username", password: "password"]
   end
 
   scope "/reset", BetterBigCanvasWeb do
