@@ -5,7 +5,7 @@
 
 ## Description
 
-__Better Big Canvas__ is an improved version of Tech Lead's __Big Canvas__ written in Elixir from scratch. It uses Phoenix LiveView for server side rendering and supports real-time pubsub drawing support.
+__Better Big Canvas__ is an improved version of Tech Lead's __Big Canvas__ written in Elixir from scratch. It uses Phoenix LiveView for server side rendering and supports real-time pubsub drawing support. For more information regarding how this application was implemented, visit the following [post](https://blog.kommit.co/improving-techleads-big-canvas-1fca6806c0ac).
 
 ---
 ## Getting Started
