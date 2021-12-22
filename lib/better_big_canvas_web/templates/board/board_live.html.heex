@@ -4,7 +4,7 @@
       <div class="row">
         <%= for j <- 1..20 do %>
           <div class="column board-square">
-            <%= live_component @socket, BetterBigCanvasWeb.BoardComponent, id: i + j, version: UUID.uuid4() %>
+            <%= live_component BetterBigCanvasWeb.BoardComponent, id: i + j, version: UUID.uuid4() %>
           </div>
         <% end %>
       </div>

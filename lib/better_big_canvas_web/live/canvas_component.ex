@@ -10,8 +10,8 @@ defmodule BetterBigCanvasWeb.CanvasComponent do
   end
 
   def render(assigns) do
-    ~L"""
-    <div id="<% @id %>" class="board canvas-square" phx-hook="OnClick" phx-target=<%= @myself %> style=<%= "background-color:#{@color};" %>></div>
+    ~H"""
+    <div id={@id} class="board canvas-square" phx-hook="OnClick" phx-target={@myself} style={"background-color:#{@color}"}></div>
     """
   end
 

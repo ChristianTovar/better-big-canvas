@@ -5,9 +5,9 @@ defmodule BetterBigCanvas.MixProject do
     [
       app: :better_big_canvas,
       version: "0.1.0",
-      elixir: "~> 1.7",
+      elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -45,7 +45,8 @@ defmodule BetterBigCanvas.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:elixir_uuid, "~> 1.2"},
-      {:amnesia, "~> 0.2.8"}
+      {:amnesia, "~> 0.2.8"},
+      {:esbuild, "~> 0.3", runtime: Mix.env() == :dev}
     ]
   end
 
@@ -57,7 +58,8 @@ defmodule BetterBigCanvas.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "cmd npm install --prefix assets"]
+      setup: ["deps.get"],
+      "assets.deploy": ["esbuild default --minify", "phx.digest"]
     ]
   end
 end

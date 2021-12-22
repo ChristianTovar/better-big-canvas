@@ -6,7 +6,7 @@
           <div class="row">
             <%= for j <- 0..29 do %>
               <div class="column">
-                <%= live_component @socket, BetterBigCanvasWeb.CanvasComponent, id: i + j, pickr_color: @pickr_color, parent_id: @parent_id %>
+                <%= live_component BetterBigCanvasWeb.CanvasComponent, id: i + j, pickr_color: @pickr_color, parent_id: @parent_id %>
               </div>
             <% end %>
           </div>
@@ -24,14 +24,14 @@
   <div class="row">
     <div class="column">
       <div class="arrow">
-        <img src="<%= Routes.static_path(@socket, "/images/arrow.png") %>" alt="Arrow"/>
+        <img src={Routes.static_path(@socket, "/images/arrow.png")} alt="Arrow"/>
       </div>
     </div>
     <!-- end of arrow indicator -->
 
     <div class="column">
       <div class="return">
-        <a href="/"><img src="<%= Routes.static_path(@socket, "/images/return.png") %>" alt="Return"/></a>
+        <a href="/"><img src={Routes.static_path(@socket, "/images/return.png")} alt="Return"/></a>
       </div>
     </div>
     <!-- end of return -->

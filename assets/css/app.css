@@ -20,7 +20,7 @@
   pointer-events: none;
 }
 
-// BBC
+/* BBC */
 .row {
   margin: 0 !important;
   width: 30px;
@@ -41,11 +41,10 @@
   border-width: 1px;
   height: 30px;
   width: 30px;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    border-color: black;
-  }
+}
+.board-square.hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-color: black;
 }
 .canvas-square {
   border-color: rgba(128, 128, 128, 0.08);
@@ -53,10 +52,10 @@
   height: 20px;
   width: 20px;
 
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+}
+.canvas-square.hover {
+  background-color: rgba(0, 0, 0, 0.05);
     border-color: black;
-  }
 }
 .pickr-button {
   width: 30px !important;

@@ -1,4 +1,4 @@
-import Pickr from "@simonwep/pickr";
+import Pickr from '@simonwep/pickr';
 import "@simonwep/pickr/dist/themes/nano.min.css";
 
 export const ColorPickr = (hook) => {
